@@ -33,9 +33,23 @@ export default function App() {
             
         3. Yukarıdakileri doğru bir şekilde yapıp "Abone Ol" butonuna tıklarsanız, input'un placeholder metninin " Arkadaşınızı abone yapın" haline geldiğini ve başka bir email adresi girip onu da kontrol edebildiğinizi görmelisiniz.
  */
+    const handleSumbit=(e)=>{
+      e.preventDefault()
+
+      const emailCheck=userInput.toLocaleLowerCase()
+      const isDuplicate = emailList.some(email => userEmail.toLowerCase() === userEmail)
+      setUserEmail(emailCheck)
+      setDuplicate(isDuplicate)
+      setUserInput('')
+
+    }
+
+
 
   return (
-    <form className='form'>
+    <form className='form'
+     onSubmit={handleSumbit}
+     >
       <TopText userEmail={userEmail} duplicate={duplicate} />
 
       <div>
